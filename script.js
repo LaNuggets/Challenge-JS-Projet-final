@@ -1,9 +1,13 @@
 
-const canvas = document.getElementById("canvas");
+const canvas = document.querySelector ("canvas");
 
 const ctx = canvas.getContext("2d");
 
 let cellSize = 43.75;
+
+const foodImg =new Image();
+foodImg.src = './Images/Pomme.png'
+
 
 let snake =[];
 snake[0]= { x:2*cellSize, y:8*cellSize};
@@ -28,14 +32,15 @@ const checkCollision= (head, arr)=>{
 
 const drawGame=()=> {
   ctx.clearRect(0,0,700,700);
+
+  ctx.drawImage(foodImg,foodX, foodY);
+
   for(let i=0;i<snake.length;i++){
     ctx.fillStyle = (i==0) ? "purple" : "red";
     ctx.fillRect(snake[i].x,snake[i].y, cellSize, cellSize);
     ctx.strokeStyle = "black";
     ctx.fillRect(snake[i].x,snake[i].y, cellSize, cellSize);
   }
-      ctx.fillStyle = 'yellow';
-      ctx.fillRect(foodX, foodY, cellSize, cellSize);
 
       let snakeX = snake[0].x;
       let snakeY = snake[0].y;
@@ -47,7 +52,7 @@ const drawGame=()=> {
 
       if(snakeX == foodX && snakeY == foodY){
         foodCounter++;
-        maxFoodCounter++;
+        if(foodCounter>maxFoodCounter)maxFoodCounter++;
         foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
         foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
       } else{
@@ -103,3 +108,18 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
+// const board = document.querySelector('canvas');
+// for (let row = 0; row < 16; row++) {
+//     for (let col = 0; col < 16; col++) {
+//         const square = document.createElement('div');
+//         square.classList.add('square');
+//         const isEvenRow = row % 2 === 0;
+//         const isEvenCol = col % 2 === 0;
+//         if ((isEvenRow && !isEvenCol) || (!isEvenRow && isEvenCol)) {
+//             square.classList.add('light-square');
+//         } else {
+//             square.classList.add('dark-square');
+//         }
+//         board.appendChild(square);
+//     }
+// }
