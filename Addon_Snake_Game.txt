@@ -1,0 +1,9 @@
+Addon:
+-Ajout Mur sur prise de fruit.
+-Vitesse du serpent.
+-taille du terrain.
+-Mode Sombre avec Lumière.
+-Mode commande inverser.
+-Plusieur fruits en meme temps.
+-Map infini.
+-Mode Mirroir.
