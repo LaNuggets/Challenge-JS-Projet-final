@@ -1,14 +1,14 @@
-body {
-    background-color: rgba(2, 177, 95, 0.488)  ;
+/* body {
+  background-color: rgba(2, 177, 95, 0.488)  ;
 }
 .board {
-    height: 700px;
-    width: 700px;
-    display: block;
-    border: 5px solid black;
-    margin-left: 15%;
-    margin-top: 2%;
-  }
+  height: 700px;
+  width: 700px;
+  display: block;
+  border: 5px solid black;
+  margin-left: 15%;
+  margin-top: 2%;
+}
 
 .square {
     z-index: -2;
@@ -20,8 +20,8 @@ body {
   }
   
 .light-square {
-    background: rgb(59, 59, 233);
-  }
+  background: rgb(59, 59, 233);
+}
 .dark-square {
     background:rgb(0, 0, 175);
 }
