@@ -36,3 +36,4 @@ function roundRect(x, y, w, h, radius)
   context.fillStyle = "purple";
   context.fill();
 }
+roundRect(5, 5, 87.5, 43.75, 20);
