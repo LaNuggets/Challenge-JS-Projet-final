@@ -8,6 +8,15 @@ let cellSize = 43.75;
 const foodImg =new Image();
 foodImg.src = './Images/Pomme.png'
 
+const backgroundImage = new Image();
+backgroundImage.src = './Images/background.jpg'
+
+const eatApple = new Audio();
+eatApple.src = './Sound/mangePomme.mp3'
+
+const gameOver = new Audio();
+gameOver.src = './Sound/gameOver.mp3'
+
 
 let snake =[];
 snake[0]= { x:2*cellSize, y:8*cellSize};
@@ -33,6 +42,8 @@ const checkCollision= (head, arr)=>{
 const drawGame=()=> {
   ctx.clearRect(0,0,700,700);
 
+  ctx.drawImage(backgroundImage,0,0); 
+
   ctx.drawImage(foodImg,foodX, foodY);
 
   for(let i=0;i<snake.length;i++){
@@ -52,6 +63,7 @@ const drawGame=()=> {
 
       if(snakeX == foodX && snakeY == foodY){
         foodCounter++;
+        eatApple.play();
         if(foodCounter>maxFoodCounter)maxFoodCounter++;
         foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
         foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
@@ -65,6 +77,7 @@ const drawGame=()=> {
     }
 
     if(snakeX<0||snakeY<0||snakeX>15*cellSize||snakeY>15*cellSize||checkCollision(newHead, snake)){
+      gameOver.play();
       clearInterval(game);
     }
     snake.unshift(newHead);
@@ -107,19 +120,3 @@ document.addEventListener("keydown", function (event) {
       break;
   }
 });
-
-// const board = document.querySelector('canvas');
-// for (let row = 0; row < 16; row++) {
-//     for (let col = 0; col < 16; col++) {
-//         const square = document.createElement('div');
-//         square.classList.add('square');
-//         const isEvenRow = row % 2 === 0;
-//         const isEvenCol = col % 2 === 0;
-//         if ((isEvenRow && !isEvenCol) || (!isEvenRow && isEvenCol)) {
-//             square.classList.add('light-square');
-//         } else {
-//             square.classList.add('dark-square');
-//         }
-//         board.appendChild(square);
-//     }
-// }

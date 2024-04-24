@@ -1,3 +1,29 @@
 canvas{
     border: 5px solid black;
+    z-index: -2;
+}
+
+.board {
+    height: 700px;
+    width: 700px;
+    display: block;
+    border: 5px solid black;
+    margin-left: 15%;
+    margin-top: 2%;
+  }
+
+.square {
+  z-index: 2;
+    width: 43.75px;
+    height: 43.75px;
+    position: relative;
+    display: flex;
+    float: left;
+  }
+
+.light-square {
+    background: rgb(59, 59, 233);
+  }
+.dark-square {
+    background:rgb(0, 0, 175);
 }
