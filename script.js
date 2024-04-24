@@ -70,12 +70,11 @@ const drawGame=()=> {
       clearInterval(game);
     }
     snake.unshift(newHead);
-    ctx.fillStyle = 'orange';
-    ctx.font="30px Arial";
-    ctx.fillText("Score", 1*cellSize, 1*cellSize);
     
-    ctx.fillText(foodCounter, 15*cellSize, 1*cellSize);
+    
+    
     document.getElementById("foodCounter").innerHTML=foodCounter;
+    document.getElementById("maxFoodCounter").innerHTML=maxFoodCounter;
     
     
 }

@@ -13,3 +13,16 @@ canvas{
     border: 2px salmon dotted;
     background: cornsilk;
   }
+
+  .maxScore{
+    position:absolute;
+    left:450px;
+    margin-top:0px;
+    margin-left: 150px;
+  }
+
+  #maxFoodCounter{
+    padding: 4px 10px;
+    border: 2px salmon dotted;
+    background: cornsilk;
+  }
