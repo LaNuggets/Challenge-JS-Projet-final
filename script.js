@@ -18,6 +18,7 @@ let foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
 let foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
 
 let foodCounter = 0;
+
 let maxFoodCounter = 0;
 
 const checkCollision= (head, arr)=>{
@@ -51,6 +52,7 @@ const drawGame=()=> {
       if(speedY==1) snakeY+=cellSize;
 
       if(snakeX == foodX && snakeY == foodY){
+        
         foodCounter++;
         if(foodCounter>maxFoodCounter)maxFoodCounter++;
         foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
@@ -70,7 +72,12 @@ const drawGame=()=> {
     snake.unshift(newHead);
     ctx.fillStyle = 'orange';
     ctx.font="30px Arial";
+    ctx.fillText("Score", 1*cellSize, 1*cellSize);
+    
     ctx.fillText(foodCounter, 15*cellSize, 1*cellSize);
+    document.getElementById("foodCounter").innerHTML=foodCounter;
+    
+    
 }
 
 let game=setInterval(drawGame, 100);

@@ -1,3 +1,15 @@
 canvas{
     border: 5px solid black;
+    
 }
+
+.score{
+    position:absolute;
+    left:450px;
+    margin-top:0px;
+  }
+  #foodCounter{
+    padding: 4px 10px;
+    border: 2px salmon dotted;
+    background: cornsilk;
+  }
