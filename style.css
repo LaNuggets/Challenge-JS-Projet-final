@@ -1,28 +1,40 @@
 canvas{
     border: 5px solid black;
+    margin-left: 50px;
     
 }
 
 .score{
-    position:absolute;
-    left:450px;
-    margin-top:0px;
+    
+    margin-left: 40px;
+    margin-top:10px;
+    font-family: Arial,  sans-serif
   }
   #foodCounter{
     padding: 4px 10px;
-    border: 2px salmon dotted;
+    
     background: cornsilk;
   }
 
   .maxScore{
-    position:absolute;
-    left:450px;
-    margin-top:0px;
-    margin-left: 150px;
+    margin-left: 40px;
+    font-family: Arial,  sans-serif;
+    margin-top:10px;
   }
+
+  
 
   #maxFoodCounter{
     padding: 4px 10px;
-    border: 2px salmon dotted;
+    
     background: cornsilk;
+  }
+
+  .box{
+    
+    margin-top: 20px;
+    margin-left: 900px;
+    width: 500px;
+    height: 150px;
+    border: 5px solid black;
   }
