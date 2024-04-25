@@ -44,7 +44,18 @@ const drawGame = () => {
   let snakeX = snake[0].x + speedX * cellSize; // Utilisation de la vitesse pour déplacer le serpent
   let snakeY = snake[0].y + speedY * cellSize;
 
-  
+  // Gestion de l'infini
+  if (snakeX < 0) {
+    snakeX = canvas.width - cellSize; 
+  } else if (snakeX >= canvas.width) {
+    snakeX = 0; 
+  }
+
+  if (snakeY < 0) {
+    snakeY = canvas.height - cellSize; 
+  } else if (snakeY >= canvas.height) {
+    snakeY = 0; 
+  }
 
   if (snakeX == foodX && snakeY == foodY) {
     foodCounter++;
