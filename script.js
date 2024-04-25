@@ -100,4 +100,30 @@ document.addEventListener("keydown", function (event) {
       }
       break;
   }
+
+  const replayButton = document.getElementById("replayButton");
+
+  replayButton.addEventListener("click", function () {
+      // Réinitialisation du jeu
+      clearInterval(game); // Arrête le jeu actuel
+      initGame(); // Réinitialise le jeu
+  });
 });
+
+function initGame() {
+  // Réinitialisation des variables du jeu
+  snake = [];
+  snake[0] = { x: 2 * cellSize, y: 8 * cellSize };
+  speedX = 0;
+  speedY = 0;
+  foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
+  foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
+  foodCounter = 0;
+  maxFoodCounter = 0;
+
+  // Réinitialisation de l'image du serpent
+  snakeImg = document.getElementById('snakeD');
+
+  // Redémarrer le jeu
+  game = setInterval(drawGame, 100);
+}
