@@ -1,29 +1,40 @@
 canvas{
     border: 5px solid black;
-    z-index: -2;
+    margin-left: 50px;
+    
 }
 
-.board {
-    height: 700px;
-    width: 700px;
-    display: block;
+.score{
+    
+    margin-left: 40px;
+    margin-top:10px;
+    font-family: Arial,  sans-serif
+  }
+  #foodCounter{
+    padding: 4px 10px;
+    
+    background: cornsilk;
+  }
+
+  .maxScore{
+    margin-left: 40px;
+    font-family: Arial,  sans-serif;
+    margin-top:10px;
+  }
+
+  
+
+  #maxFoodCounter{
+    padding: 4px 10px;
+    
+    background: cornsilk;
+  }
+
+  .box{
+    
+    margin-top: 20px;
+    margin-left: 900px;
+    width: 500px;
+    height: 150px;
     border: 5px solid black;
-    margin-left: 15%;
-    margin-top: 2%;
   }
-
-.square {
-  z-index: 2;
-    width: 43.75px;
-    height: 43.75px;
-    position: relative;
-    display: flex;
-    float: left;
-  }
-
-.light-square {
-    background: rgb(59, 59, 233);
-  }
-.dark-square {
-    background:rgb(0, 0, 175);
-}
