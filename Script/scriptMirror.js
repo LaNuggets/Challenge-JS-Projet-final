@@ -30,8 +30,8 @@ let speedY = 0;
 let mirroredSpeedX = 0;
 let mirroredSpeedY =0;
 
-let foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
-let foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
+let foodX = Math.floor(Math.random() * 16 + 1) * cellSize;
+let foodY = Math.floor(Math.random() * 16 + 1) * cellSize;
 
 let foodCounter = 0;
 let maxFoodCounter = 0;
@@ -45,9 +45,15 @@ const checkCollision= (head, arr)=>{
   return false;
 }
 
+const headCollision=(head)=>{
+    if(head.x == 8*cellSize && head.y == 8*cellSize){
+      return true;
+    }
+    return false;
+}
 
 const drawGame=()=> {
-  ctx.clearRect(0,0,700,700);
+  ctx.clearRect(0,0,743.75,743.75);
 
   // ctx.drawImage(backgroundImage,0,0);
 
@@ -77,19 +83,20 @@ const drawGame=()=> {
       if(speedX==1) snakeX+=cellSize;
       if(speedY==1) snakeY+=cellSize;
 
-      if(mirroredSpeedX==-1) mirroredSnakeX+=cellSize;
-      if(mirroredSpeedY==-1) mirroredSnakeY+=cellSize;
-      if(mirroredSpeedX==1) mirroredSnakeX-=cellSize;
-      if(mirroredSpeedY==1) mirroredSnakeY-=cellSize;
+      if(mirroredSpeedX==-1) mirroredSnakeX-=cellSize;
+      if(mirroredSpeedY==-1) mirroredSnakeY-=cellSize;
+      if(mirroredSpeedX==1) mirroredSnakeX+=cellSize;
+      if(mirroredSpeedY==1) mirroredSnakeY+=cellSize;
 
       if(snakeX == foodX && snakeY == foodY || mirroredSnakeX == foodX && mirroredSnakeY == foodY ){
         foodCounter++;
         eatApple.play();
         if(foodCounter>maxFoodCounter)maxFoodCounter++;
-        foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
-        foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
+        foodX = Math.floor(Math.random() * 16 + 1) * cellSize;
+        foodY = Math.floor(Math.random() * 16 + 1) * cellSize;
       } else{
         snake.pop();
+        mirroredSnake.pop();
       }
 
     let newHead ={
@@ -101,20 +108,19 @@ const drawGame=()=> {
         y:mirroredSnakeY,
       }
 
-    if(snakeX<0||snakeY<0||snakeX>15*cellSize||snakeY>15*cellSize||checkCollision(newHead, snake)){
+    if(snakeX<0||snakeY<0||snakeX>16*cellSize||snakeY>16*cellSize||checkCollision(newHead, snake)||checkCollision(newHead, mirroredSnake)|| checkCollision(newMirroredHead, snake)||headCollision(newHead)){
       gameOver.play();
       clearInterval(game);
     }
     snake.unshift(newHead);
-    // mirroredSnake.unshift(newMirroredHead);
+    mirroredSnake.unshift(newMirroredHead);
 
     ctx.fillStyle = 'orange';
     ctx.font="30px Arial";
-    ctx.fillText(foodCounter, 15*cellSize, 1*cellSize);
+    ctx.fillText(foodCounter, 16*cellSize, 1*cellSize);
 }
 
 let game=setInterval(drawGame, 100);
-
 
 document.addEventListener("keydown", function (event) {
   switch (event.keyCode) {
@@ -132,7 +138,7 @@ document.addEventListener("keydown", function (event) {
         speedX = 0;
         speedY = -1;
         mirroredSpeedX = 0;
-        mirroredSpeedY = -1;
+        mirroredSpeedY = 1;
       }
       break;
     case 39: // flèche droite
