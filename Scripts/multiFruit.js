@@ -104,8 +104,9 @@ for (let i = 0; i < snake.length; i++) {
       gameOver.play();
       clearInterval(game);
     }
-    snake.unshift(newHead);
-    
+    snake.unshift(newHead); 
+    document.getElementById("foodCounter").innerHTML = foodCounter;
+    document.getElementById("maxFoodCounter").innerHTML = maxFoodCounter;
 }
 
 let game=setInterval(drawGame, 100);
@@ -151,3 +152,20 @@ document.addEventListener("keydown", function (event) {
       initGame(); // Réinitialise le jeu
   });
 });
+
+function initGame() {
+  // Réinitialisation des variables du jeu
+  snake = [];
+  snake[0] = { x: 2 * cellSize, y: 8 * cellSize };
+  speedX = 0;
+  speedY = 0;
+  foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
+  foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
+  foodCounter = 0;
+
+  // Réinitialisation de l'image du serpent
+  snakeImg = document.getElementById('snakeD');
+
+  // Redémarrer le jeu
+  game = setInterval(drawGame, 100);
+}
