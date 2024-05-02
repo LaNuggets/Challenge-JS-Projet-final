@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    
+   <div class="box">
+        <h2 class="score">Score: <span id="foodCounter"/></span></h2>
+        <h2 class="maxScore">Max Score: <span id="maxFoodCounter"/></span></h2>
+   </div>
+   
+   <img id="snakeD" src="../Images/snakeDroit.png" style="display: none;">
+   <img id="snakeG" src="../Images/snakeGauche.png" style="display: none;">
+   <img id="snakeH" src="../Images/snakeHaut.png" style="display: none;">
+   <img id="snakeB" src="../Images/snakeBas.png" style="display: none;">
+   <img id="bodySnakeImg" src="../Images/bodySnake.png" style="display: none;">
+
+
+   <img id="bodySnakeImg2" src="../Images/bodySnake2.png" style="display: none;">
+   <img id="snakeD2" src="../Images/snakeDroit2.png" style="display: none;">
+   <img id="snakeG2" src="../Images/snakeGauche2.png" style="display: none;">
+   <img id="snakeH2" src="../Images/snakeHaut2.png" style="display: none;">
+   <img id="snakeB2" src="../Images/snakeBas2.png" style="display: none;">
+
+
+    <canvas id="canvas" width="743.75" height="743.75"></canvas>
+
+    <button id="replayButton">Rejouer</button>
+
+    <script src="../Scripts/mirror.js"></script>
+
+    
+   
+</body>
+</html>
