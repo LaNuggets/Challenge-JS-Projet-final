@@ -3,7 +3,7 @@ const ctx = canvas.getContext("2d");
 let cellSize = 43.75;
 
 const foodImg = new Image();
-foodImg.src = './Images/Pomme.png';
+foodImg.src = '../Images/Pomme.png';
 
 let snake = [];
 snake[0] = { x: 2 * cellSize, y: 8 * cellSize };

@@ -3,7 +3,7 @@ const ctx = canvas.getContext("2d");
 let cellSize = 43.75;
 
 const foodImg = new Image();
-foodImg.src = './Images/Pomme.png';
+foodImg.src = '../Images/Pomme.png';
 
 let snake = [];
 snake[0] = { x: 2 * cellSize, y: 8 * cellSize };
@@ -44,8 +44,6 @@ const drawGame = () => {
   let snakeX = snake[0].x + speedX * cellSize; // Utilisation de la vitesse pour déplacer le serpent
   let snakeY = snake[0].y + speedY * cellSize;
 
-  
-
   if (snakeX == foodX && snakeY == foodY) {
     foodCounter++;
     if (foodCounter > maxFoodCounter) maxFoodCounter++;
@@ -72,36 +70,39 @@ const drawGame = () => {
 let game = setInterval(drawGame, 100);
 
 document.addEventListener("keydown", function (event) {
-  switch (event.keyCode) {
-    case 37: // flèche gauche
-      if (speedX !== 1) {
-        snakeImg = document.getElementById('snakeG');
-        speedX = -1;
-        speedY = 0;
-      }
-      break;
-    case 38: // flèche haut
-      if (speedY !== 1) {
-        snakeImg = document.getElementById('snakeH');
-        speedX = 0;
-        speedY = -1;
-      }
-      break;
-    case 39: // flèche droite
-      if (speedX !== -1) {
-        snakeImg = document.getElementById('snakeD');
-        speedX = 1;
-        speedY = 0;
-      }
-      break;
-    case 40: // flèche bas
-      if (speedY !== -1) {
-        snakeImg = document.getElementById('snakeB');
-        speedX = 0;
-        speedY = 1;
-      }
-      break;
-  }
+    switch (event.keyCode) {
+      case 37: // flèche gauche
+        if (speedX !== -1) {
+            snakeImg = document.getElementById('snakeD');
+          speedX = 1;
+          speedY = 0;
+        }
+        break;
+      case 38: // flèche haut
+        if (speedY !== -1) {
+            snakeImg = document.getElementById('snakeB');
+          speedX = 0;
+          speedY = 1;
+        }
+        break;
+      case 39: // flèche droite
+        if (speedX !== 1) {
+          
+          snakeImg = document.getElementById('snakeG');
+          speedX = -1;
+          speedY = 0;
+        }
+        break;
+      case 40: // flèche bas
+        if (speedY !== 1) {
+            snakeImg = document.getElementById('snakeH');
+          speedX = 0;
+          speedY = -1;
+        }
+        break;
+    }
+  });
+  
 
   const replayButton = document.getElementById("replayButton");
 
@@ -110,7 +111,7 @@ document.addEventListener("keydown", function (event) {
       clearInterval(game); // Arrête le jeu actuel
       initGame(); // Réinitialise le jeu
   });
-});
+
 
 function initGame() {
   // Réinitialisation des variables du jeu
