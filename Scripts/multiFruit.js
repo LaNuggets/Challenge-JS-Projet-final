@@ -105,9 +105,7 @@ for (let i = 0; i < snake.length; i++) {
       clearInterval(game);
     }
     snake.unshift(newHead);
-    ctx.fillStyle = 'orange';
-    ctx.font="30px Arial";
-    ctx.fillText(foodCounter, 15*cellSize, 1*cellSize);
+    
 }
 
 let game=setInterval(drawGame, 100);
