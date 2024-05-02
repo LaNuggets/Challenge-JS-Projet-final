@@ -132,7 +132,7 @@ function initGame() {
   foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
   foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
   foodCounter = 0;
-  maxFoodCounter = 0;
+  
 
   // Réinitialisation de l'image du serpent
   snakeImg = document.getElementById('snakeD');
