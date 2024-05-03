@@ -5,6 +5,12 @@ let cellSize = 43.75;
 const foodImg = new Image();
 foodImg.src = '../Images/Pomme.png';
 
+const eatApple = new Audio();
+eatApple.src = '../Sound/mangePomme.mp3'
+
+const gameOver = new Audio();
+gameOver.src = '../Sound/gameOver.mp3'
+
 let snake = [];
 snake[0] = { x: 2 * cellSize, y: 8 * cellSize };
 
@@ -48,6 +54,7 @@ const drawGame = () => {
 
   if (snakeX == foodX && snakeY == foodY) {
     foodCounter++;
+    eatApple.play();
     if (foodCounter > maxFoodCounter) maxFoodCounter++;
     foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
     foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
@@ -61,6 +68,7 @@ const drawGame = () => {
   };
 
   if (snakeX < 0 || snakeY < 0 || snakeX >= 16 * cellSize || snakeY >= 16 * cellSize || checkCollision(newHead, snake)) {
+    gameOver.play();
     clearInterval(game);
   }
   snake.unshift(newHead);
