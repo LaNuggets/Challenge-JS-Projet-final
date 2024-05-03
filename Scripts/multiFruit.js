@@ -64,6 +64,8 @@ foodXCoordinates.forEach((x, index) => {
     const y = foodYCoordinates[index];
     ctx.drawImage(foodImg, x, y);
 });
+drawGridBackground();
+
 
 
 for (let i = 0; i < snake.length; i++) {
@@ -168,4 +170,20 @@ function initGame() {
 
   // Redémarrer le jeu
   game = setInterval(drawGame, 100);
+}
+
+function drawGridBackground() {
+  const numCols = Math.ceil(canvas.width / cellSize);
+  const numRows = Math.ceil(canvas.height / cellSize);
+
+
+  for (let col = 0; col < numCols; col++) {
+    for (let row = 0; row < numRows; row++) {
+      const x = col * cellSize;
+      const y = row * cellSize;
+      const isEven = (col + row) % 2 === 0;
+      ctx.fillStyle = isEven ? 'pink' : 'orange';
+      ctx.fillRect(x, y, cellSize, cellSize);
+    }
+  }
 }
