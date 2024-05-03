@@ -64,6 +64,7 @@ const checkWallCollision =(head, walls)=>{
 const drawGame=()=> {
   const bodySnakeImg = document.getElementById('bodySnakeImg');
   ctx.clearRect(0,0,700,700);
+  drawGridBackground();
  
 for(let i=0; i< newWall.length;i++){
     ctx.fillStyle = "black";
@@ -173,4 +174,20 @@ function initGame() {
 
   // Redémarrer le jeu
   game = setInterval(drawGame, 100);
+}
+
+function drawGridBackground() {
+  const numCols = Math.ceil(canvas.width / cellSize);
+  const numRows = Math.ceil(canvas.height / cellSize);
+
+
+  for (let col = 0; col < numCols; col++) {
+    for (let row = 0; row < numRows; row++) {
+      const x = col * cellSize;
+      const y = row * cellSize;
+      const isEven = (col + row) % 2 === 0;
+      ctx.fillStyle = isEven ? 'pink' : 'orange';
+      ctx.fillRect(x, y, cellSize, cellSize);
+    }
+  }
 }
