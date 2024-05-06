@@ -45,6 +45,7 @@ let allFood= ([
     const foodYCoordinates =allFood.map((y)=> y.y);
 
 let foodCounter = 0;
+let foodCounter2 = 0
 let maxFoodCounter = 0;
 
 const checkCollision= (head, arr)=>{
@@ -89,6 +90,7 @@ for (let i = 0; i < snake.length; i++) {
         const y = foodYCoordinates[index];
       if(snakeX == x && snakeY == y){
         foodCounter++;
+        foodCounter2++
         eatApple.play();
         if(foodCounter>maxFoodCounter)maxFoodCounter++;
             foodXCoordinates[index] =Math.floor(Math.random() * 15 + 1) * cellSize;
@@ -104,13 +106,14 @@ for (let i = 0; i < snake.length; i++) {
     }
 
     if(snakeX<0||snakeY<0||snakeX>15*cellSize||snakeY>15*cellSize||checkCollision(newHead, snake)){
-      gameOver.play();
-      clearInterval(game);
+      gameOverHandler();
+    
+    clearInterval(game);;
     }
     snake.unshift(newHead); 
     document.getElementById("foodCounter").innerHTML = foodCounter;
     document.getElementById("maxFoodCounter").innerHTML = maxFoodCounter;
-    document.getElementById("")
+    document.getElementById("foodCounter2").innerHTML = foodCounter2;
 }
 
 function gameOverHandler() {
@@ -159,13 +162,7 @@ document.addEventListener("keydown", function (event) {
       break;
   }
 
-  // const replayButton = document.getElementById("replayButton");
-
-  // replayButton.addEventListener("click", function () {
-  //     // Réinitialisation du jeu
-  //     clearInterval(game); // Arrête le jeu actuel
-  //     initGame(); // Réinitialise le jeu
-  // });
+  
 });
 
 function initGame() {
@@ -177,6 +174,7 @@ function initGame() {
   foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
   foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
   foodCounter = 0;
+  foodCounter2 = 0
 
   // Réinitialisation de l'image du serpent
   snakeImg = document.getElementById('snakeD');

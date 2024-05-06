@@ -11,9 +11,6 @@ eatApple.src = '../Sound/mangePomme.mp3'
 const gameOver = new Audio();
 gameOver.src = '../Sound/gameOver.mp3'
 
-
-
-
 let snake = [];
 snake[0] = { x: 2 * cellSize, y: 8 * cellSize };
 
@@ -137,13 +134,7 @@ document.addEventListener("keydown", function (event) {
       break;
   }
 
-  // const replayButton = document.getElementById("replayButton");
-
-  // replayButton.addEventListener("click", function () {
-  //     // Réinitialisation du jeu
-  //     clearInterval(game); // Arrête le jeu actuel
-  //     initGame(); // Réinitialise le jeu
-  // });
+  
 });
 
 function initGame() {

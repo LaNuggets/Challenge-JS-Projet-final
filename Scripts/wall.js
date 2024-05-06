@@ -28,6 +28,7 @@ let foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
 let foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
 
 let foodCounter = 0;
+let foodCounter2 = 0
 let maxFoodCounter = 0;
 
 class Wall {
@@ -91,6 +92,7 @@ for(let i=0; i< newWall.length;i++){
 
       if(snakeX == foodX && snakeY == foodY){
         foodCounter++;
+        foodCounter2++
         eatApple.play();
         if(foodCounter>maxFoodCounter)maxFoodCounter++;
         foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
@@ -106,7 +108,8 @@ for(let i=0; i< newWall.length;i++){
     }
 
     if(snakeX<0||snakeY<0||snakeX>15*cellSize||snakeY>15*cellSize||checkCollision(newHead, snake)||checkWallCollision(newHead, newWall)){
-      gameOver.play();
+      gameOverHandler();
+    
       clearInterval(game);
     }
     snake.unshift(newHead);
@@ -160,13 +163,7 @@ document.addEventListener("keydown", function (event) {
       break;
   }
 
-  const replayButton = document.getElementById("replayButton");
-
-  replayButton.addEventListener("click", function () {
-      // Réinitialisation du jeu
-      clearInterval(game); // Arrête le jeu actuel
-      initGame(); // Réinitialise le jeu
-  });
+  
 });
 
 function initGame() {
@@ -178,6 +175,7 @@ function initGame() {
   foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
   foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
   foodCounter = 0;
+  foodCounter2 = 0
   newWall = [];
 
   // Réinitialisation de l'image du serpent
