@@ -5,6 +5,7 @@ let cellSize = 43.75;
 const foodImg = new Image();
 foodImg.src = '../Images/Pomme.png';
 
+
 const eatApple = new Audio();
 eatApple.src = '../Sound/mangePomme.mp3'
 
@@ -85,6 +86,7 @@ const drawGame = () => {
   document.getElementById("foodCounter").innerHTML = foodCounter;
   document.getElementById("maxFoodCounter").innerHTML = maxFoodCounter;
   document.getElementById("foodCounter2").innerHTML = foodCounter2;
+document.getElementById("foodImg").innerHTML = foodImg;
   
 };
 
@@ -171,3 +173,8 @@ function drawGridBackground() {
     }
   }
 }
+
+
+
+
+
