@@ -24,6 +24,7 @@ let foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
 let foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
 
 let foodCounter = 0;
+let foodCounter2 = 0;
 let maxFoodCounter = 0;
 
 const checkCollision = (head, arr) => {
@@ -61,6 +62,7 @@ const drawGame = () => {
 
   if (snakeX == foodX && snakeY == foodY) {
     foodCounter++;
+    foodCounter2++
     eatApple.play();
     if (foodCounter > maxFoodCounter) maxFoodCounter++;
     foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
@@ -84,6 +86,7 @@ const drawGame = () => {
 
   document.getElementById("foodCounter").innerHTML = foodCounter;
   document.getElementById("maxFoodCounter").innerHTML = maxFoodCounter;
+  document.getElementById("foodCounter2").innerHTML = foodCounter2;
 };
 
 function gameOverHandler() {
@@ -150,6 +153,7 @@ function initGame() {
   foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
   foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
   foodCounter = 0;
+  foodCounter2 = 0
   
 
   // Réinitialisation de l'image du serpent
