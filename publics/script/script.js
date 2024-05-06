@@ -6,13 +6,13 @@ const ctx = canvas.getContext("2d");
 let cellSize = 43.75;
 
 const foodImg = new Image();
-foodImg.src = '../Images/Pomme.png';
+foodImg.src = './Images/Pomme.png';
 
 const eatApple = new Audio();
-eatApple.src = '../Sound/mangePomme.mp3'
+eatApple.src = './Sound/mangePomme.mp3'
 
 const gameOver = new Audio();
-gameOver.src = '../Sound/gameOver.mp3'
+gameOver.src = './Sound/gameOver.mp3'
 
 let snake = [];
 snake[0] = { x: 2 * cellSize, y: 8 * cellSize };
