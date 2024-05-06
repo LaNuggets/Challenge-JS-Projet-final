@@ -21,6 +21,7 @@ let foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
 let foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
 
 let foodCounter = 0;
+let foodCounter2 = 0
 let maxFoodCounter = 0;
 
 const checkCollision = (head, arr) => {
@@ -39,7 +40,7 @@ const drawGame = () => {
   ctx.clearRect(0, 0, 700, 700);
   drawGridBackground();
   ctx.drawImage(foodImg, foodX, foodY);
-
+  
 
   
   for (let i = 0; i < snake.length; i++) {
@@ -57,6 +58,7 @@ const drawGame = () => {
 
   if (snakeX == foodX && snakeY == foodY) {
     foodCounter++;
+    foodCounter2++
     eatApple.play();
     if (foodCounter > maxFoodCounter) maxFoodCounter++;
     foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
@@ -71,14 +73,27 @@ const drawGame = () => {
   };
 
   if (snakeX < 0 || snakeY < 0 || snakeX >= 16 * cellSize || snakeY >= 16 * cellSize || checkCollision(newHead, snake)) {
-    gameOver.play();
+    gameOverHandler();
+    
     clearInterval(game);
   }
   snake.unshift(newHead);
 
   document.getElementById("foodCounter").innerHTML = foodCounter;
   document.getElementById("maxFoodCounter").innerHTML = maxFoodCounter;
+  document.getElementById("foodCounter2").innerHTML = foodCounter2;
 };
+
+function gameOverHandler() {
+  gameOver.play();
+  clearInterval(game);
+  document.getElementById("popup").style.display = "block";
+}
+
+document.getElementById("replayButtonPopup").addEventListener("click", function () {
+  document.getElementById("popup").style.display = "none";
+  initGame();
+});
 
 let game = setInterval(drawGame, 50);
 
@@ -114,13 +129,7 @@ document.addEventListener("keydown", function (event) {
       break;
   }
 
-  const replayButton = document.getElementById("replayButton");
-
-  replayButton.addEventListener("click", function () {
-      // Réinitialisation du jeu
-      clearInterval(game); // Arrête le jeu actuel
-      initGame(); // Réinitialise le jeu
-  });
+  
 });
 
 function initGame() {
@@ -132,7 +141,8 @@ function initGame() {
   foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
   foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
   foodCounter = 0;
-  maxFoodCounter = 0;
+  foodCounter2 = 0
+  
 
   // Réinitialisation de l'image du serpent
   snakeImg = document.getElementById('snakeD');
