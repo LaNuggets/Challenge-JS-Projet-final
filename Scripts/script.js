@@ -12,8 +12,6 @@ const gameOver = new Audio();
 gameOver.src = '../Sound/gameOver.mp3'
 
 
-
-
 let snake = [];
 snake[0] = { x: 2 * cellSize, y: 8 * cellSize };
 

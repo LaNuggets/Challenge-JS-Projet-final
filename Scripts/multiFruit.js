@@ -60,11 +60,11 @@ const checkCollision= (head, arr)=>{
 const drawGame=()=> {
   const bodySnakeImg = document.getElementById('bodySnakeImg');
   ctx.clearRect(0,0,700,700);
+drawGridBackground();
 foodXCoordinates.forEach((x, index) => {
     const y = foodYCoordinates[index];
     ctx.drawImage(foodImg, x, y);
 });
-drawGridBackground();
 
 
 
@@ -175,7 +175,6 @@ function initGame() {
 function drawGridBackground() {
   const numCols = Math.ceil(canvas.width / cellSize);
   const numRows = Math.ceil(canvas.height / cellSize);
-
 
   for (let col = 0; col < numCols; col++) {
     for (let row = 0; row < numRows; row++) {
