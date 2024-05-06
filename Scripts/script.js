@@ -27,6 +27,7 @@ let foodCounter = 0;
 let foodCounter2 = 0;
 let maxFoodCounter = 0;
 
+
 const checkCollision = (head, arr) => {
   for (let i = 0; i < arr.length; i++) {
     if (head.x == arr[i].x && head.y == arr[i].y) {
@@ -87,6 +88,7 @@ const drawGame = () => {
   document.getElementById("foodCounter").innerHTML = foodCounter;
   document.getElementById("maxFoodCounter").innerHTML = maxFoodCounter;
   document.getElementById("foodCounter2").innerHTML = foodCounter2;
+  
 };
 
 function gameOverHandler() {

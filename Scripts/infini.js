@@ -88,6 +88,16 @@ const drawGame = () => {
   document.getElementById("foodCounter").innerHTML = foodCounter;
   document.getElementById("maxFoodCounter").innerHTML = maxFoodCounter;
 };
+function gameOverHandler() {
+  gameOver.play();
+  clearInterval(game);
+  document.getElementById("popup").style.display = "block";
+}
+
+document.getElementById("replayButtonPopup").addEventListener("click", function () {
+  document.getElementById("popup").style.display = "none";
+  initGame();
+});
 
 let game = setInterval(drawGame, 100);
 

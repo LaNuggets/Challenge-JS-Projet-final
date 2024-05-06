@@ -37,8 +37,9 @@ let snakeImg = document.getElementById('snakeD'); // Initialisation de snakeImg
 const drawGame = () => {
   const bodySnakeImg = document.getElementById('bodySnakeImg');
   ctx.clearRect(0, 0, 700, 700);
-  ctx.drawImage(foodImg, foodX, foodY);
   drawGridBackground();
+  ctx.drawImage(foodImg, foodX, foodY);
+  
 
   
   for (let i = 0; i < snake.length; i++) {
@@ -77,7 +78,19 @@ const drawGame = () => {
 
   document.getElementById("foodCounter").innerHTML = foodCounter;
   document.getElementById("maxFoodCounter").innerHTML = maxFoodCounter;
+  document.getElementById("foodCounter2").innerHTML = foodCounter2;
 };
+
+function gameOverHandler() {
+  gameOver.play();
+  clearInterval(game);
+  document.getElementById("popup").style.display = "block";
+}
+
+document.getElementById("replayButtonPopup").addEventListener("click", function () {
+  document.getElementById("popup").style.display = "none";
+  initGame();
+});
 
 let game = setInterval(drawGame, 50);
 

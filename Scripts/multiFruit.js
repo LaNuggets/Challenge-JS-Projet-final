@@ -60,11 +60,12 @@ const checkCollision= (head, arr)=>{
 const drawGame=()=> {
   const bodySnakeImg = document.getElementById('bodySnakeImg');
   ctx.clearRect(0,0,700,700);
+  drawGridBackground();
 foodXCoordinates.forEach((x, index) => {
     const y = foodYCoordinates[index];
     ctx.drawImage(foodImg, x, y);
 });
-drawGridBackground();
+
 
 
 
@@ -109,7 +110,19 @@ for (let i = 0; i < snake.length; i++) {
     snake.unshift(newHead); 
     document.getElementById("foodCounter").innerHTML = foodCounter;
     document.getElementById("maxFoodCounter").innerHTML = maxFoodCounter;
+    document.getElementById("")
 }
+
+function gameOverHandler() {
+  gameOver.play();
+  clearInterval(game);
+  document.getElementById("popup").style.display = "block";
+}
+
+document.getElementById("replayButtonPopup").addEventListener("click", function () {
+  document.getElementById("popup").style.display = "none";
+  initGame();
+});
 
 let game=setInterval(drawGame, 100);
 
@@ -146,13 +159,13 @@ document.addEventListener("keydown", function (event) {
       break;
   }
 
-  const replayButton = document.getElementById("replayButton");
+  // const replayButton = document.getElementById("replayButton");
 
-  replayButton.addEventListener("click", function () {
-      // Réinitialisation du jeu
-      clearInterval(game); // Arrête le jeu actuel
-      initGame(); // Réinitialise le jeu
-  });
+  // replayButton.addEventListener("click", function () {
+  //     // Réinitialisation du jeu
+  //     clearInterval(game); // Arrête le jeu actuel
+  //     initGame(); // Réinitialise le jeu
+  // });
 });
 
 function initGame() {

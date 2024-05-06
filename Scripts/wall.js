@@ -112,8 +112,19 @@ for(let i=0; i< newWall.length;i++){
     snake.unshift(newHead);
     document.getElementById("foodCounter").innerHTML = foodCounter;
     document.getElementById("maxFoodCounter").innerHTML = maxFoodCounter;
+    document.getElementById("foodCounter2").innerHTML = foodCounter2;
 }
 
+function gameOverHandler() {
+  gameOver.play();
+  clearInterval(game);
+  document.getElementById("popup").style.display = "block";
+}
+
+document.getElementById("replayButtonPopup").addEventListener("click", function () {
+  document.getElementById("popup").style.display = "none";
+  initGame();
+});
 let game=setInterval(drawGame, 100);
 
 
