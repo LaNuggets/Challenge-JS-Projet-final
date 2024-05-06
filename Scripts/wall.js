@@ -8,6 +8,9 @@ let cellSize = 43.75;
 const foodImg =new Image();
 foodImg.src = '../Images/Pomme.png'
 
+const mur =new Image();
+mur.src = '../Images/mur.png'
+
 const backgroundImage = new Image();
 backgroundImage.src = '../Images/background.jpg'
 
@@ -27,6 +30,8 @@ let speedY = 0;
 let foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
 let foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
 
+let murX = Math.floor(Math.random() * 15 + 1) * cellSize;
+let murY = Math.floor(Math.random() * 15 + 1) * cellSize;
 let foodCounter = 0;
 let foodCounter2 = 0
 let maxFoodCounter = 0;
@@ -66,11 +71,12 @@ const drawGame=()=> {
   const bodySnakeImg = document.getElementById('bodySnakeImg');
   ctx.clearRect(0,0,700,700);
   drawGridBackground();
- 
-for(let i=0; i< newWall.length;i++){
-    ctx.fillStyle = "black";
-    ctx.fillRect(newWall[i].x,newWall[i].y, cellSize, cellSize);
-}
+
+  newWall.forEach((wall) => {
+    
+    ctx.drawImage(mur, wall.x, wall.y, cellSize, cellSize);
+  });
+
 
   ctx.drawImage(foodImg,foodX, foodY);
 

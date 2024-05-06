@@ -127,7 +127,7 @@ const drawGame=()=> {
 
     document.getElementById("foodCounter").innerHTML = foodCounter;
     document.getElementById("maxFoodCounter").innerHTML = maxFoodCounter;
-    document.getElementById("foodCounter").innerHTML = foodCounter2;
+    document.getElementById("foodCounter2").innerHTML = foodCounter2;
 
 }
 
