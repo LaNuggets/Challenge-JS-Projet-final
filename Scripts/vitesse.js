@@ -148,7 +148,7 @@ function initGame() {
   snakeImg = document.getElementById('snakeD');
 
   // Redémarrer le jeu
-  game = setInterval(drawGame, 100);
+  game = setInterval(drawGame, 50);
 }
 
 function drawGridBackground() {
