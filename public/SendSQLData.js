@@ -1,10 +1,12 @@
-import { createConnection } from 'mysql2';
+import { createConnection } from 'mysql2/promise';
+// const { createConnection } = require('mysql2/promise');
+// var mysql2 = require("mysql2");
 
 const connection = createConnection(
   'mysql://root:@127.0.0.1:3306/leaderboard'
 );
 
-const insertValue=(Pseudo ,Score, GameMode) => {
+const insertValue=(Pseudo,Score, GameMode) => {
     let id = 0;
     const checkIdQuery = `SELECT id FROM leaderboard WHERE Pseudo = ? LIMIT 1`;
     connection.query(checkIdQuery,[Pseudo],(error,idResult)=>{
@@ -42,3 +44,4 @@ const insertValue=(Pseudo ,Score, GameMode) => {
 connection.addListener('error', (err) => {
   console.log(err);
 });
+export {insertValue}

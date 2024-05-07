@@ -1,53 +1,79 @@
-// import {pseudo} from "./interface";
-// console.log(pseudo);
 
-const canvas = document.querySelector("canvas");
+const canvas = document.querySelector ("canvas");
+
 const ctx = canvas.getContext("2d");
+
 let cellSize = 43.75;
 
-const foodImg = new Image();
-foodImg.src = './Images/Pomme.png';
+const foodImg =new Image();
+foodImg.src = '../Images/Pomme.png'
+
+const backgroundImage = new Image();
+backgroundImage.src = '../Images/background.jpg'
 
 const eatApple = new Audio();
-eatApple.src = './Sound/mangePomme.mp3'
+eatApple.src = '../Sound/mangePomme.mp3'
 
 const gameOver = new Audio();
-gameOver.src = './Sound/gameOver.mp3'
+gameOver.src = '../Sound/gameOver.mp3'
 
-let snake = [];
-snake[0] = { x: 2 * cellSize, y: 8 * cellSize };
+let snakeImg = document.getElementById('snakeD'); // Initialisation de snakeImg
+
+let snake =[];
+snake[0]= { x:2*cellSize, y:8*cellSize};
 
 let speedX = 0;
 let speedY = 0;
-
 let foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
 let foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
 
 let foodCounter = 0;
-let foodCounter2 = 0;
+let foodCounter2 = 0
 let maxFoodCounter = 0;
 
+class Wall {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+let newWall = [];
+const addWall =(x, y)=> {
+    let wall = new Wall(x, y);
+    newWall.push(wall);
+}
 
-const checkCollision = (head, arr) => {
-  for (let i = 0; i < arr.length; i++) {
-    if (head.x == arr[i].x && head.y == arr[i].y) {
-      return true;
+const checkCollision= (head, arr)=>{
+  for(let i=0;i<arr.length;i++){
+    if(head.x == arr[i].x && head.y == arr[i].y){
+      return true
     }
   }
   return false;
-};
+}
 
-let snakeImg = document.getElementById('snakeD'); // Initialisation de snakeImg
+const checkWallCollision =(head, walls)=>{
+    for(let i=0;i< walls.length;i++){
+        if(head.x == walls[i].x && head.y == walls[i].y){
+            return true;
+        }
+    }
+    return false;
+}
 
 
-
-export const drawGame = () => {
+const drawGame=()=> {
   const bodySnakeImg = document.getElementById('bodySnakeImg');
-  ctx.clearRect(0, 0, 700, 700);
+  ctx.clearRect(0,0,700,700);
   drawGridBackground();
-  ctx.drawImage(foodImg, foodX, foodY);
+ 
+for(let i=0; i< newWall.length;i++){
+    ctx.fillStyle = "black";
+    ctx.fillRect(newWall[i].x,newWall[i].y, cellSize, cellSize);
+}
 
-  
+  ctx.drawImage(foodImg,foodX, foodY);
+
   for (let i = 0; i < snake.length; i++) {
     if (i === 0) {
       ctx.drawImage(snakeImg, snake[i].x, snake[i].y, cellSize, cellSize);
@@ -56,40 +82,41 @@ export const drawGame = () => {
     }
   }
 
-  let snakeX = snake[0].x + speedX * cellSize; // Utilisation de la vitesse pour déplacer le serpent
-  let snakeY = snake[0].y + speedY * cellSize;
+      let snakeX = snake[0].x;
+      let snakeY = snake[0].y;
 
-  
+      if(speedX==-1) snakeX-=cellSize;
+      if(speedY==-1) snakeY-=cellSize;
+      if(speedX==1) snakeX+=cellSize;
+      if(speedY==1) snakeY+=cellSize;
 
-  if (snakeX == foodX && snakeY == foodY) {
-    foodCounter++;
-    foodCounter2++
-    eatApple.play();
-    if (foodCounter > maxFoodCounter) maxFoodCounter++;
-    foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
-    foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
-  } else {
-    snake.pop();
-  }
+      if(snakeX == foodX && snakeY == foodY){
+        foodCounter++;
+        foodCounter2++
+        eatApple.play();
+        if(foodCounter>maxFoodCounter)maxFoodCounter++;
+        foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
+        foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
+        addWall(Math.floor(Math.random() * 15 + 1) * cellSize, Math.floor(Math.random() * 15 + 1) * cellSize);
+      } else{
+        snake.pop();
+      }
 
-  let newHead = {
-    x: snakeX,
-    y: snakeY,
-  };
+    let newHead ={
+      x:snakeX,
+      y:snakeY,
+    }
 
-  if (snakeX < 0 || snakeY < 0 || snakeX >= 16 * cellSize || snakeY >= 16 * cellSize || checkCollision(newHead, snake)) {
-    gameOverHandler();
+    if(snakeX<0||snakeY<0||snakeX>15*cellSize||snakeY>15*cellSize||checkCollision(newHead, snake)||checkWallCollision(newHead, newWall)){
+      gameOverHandler();
     
-    clearInterval(game);
-    
-  }
-  snake.unshift(newHead);
-
-  document.getElementById("foodCounter").innerHTML = foodCounter;
-  document.getElementById("maxFoodCounter").innerHTML = maxFoodCounter;
-  document.getElementById("foodCounter2").innerHTML = foodCounter2;
-  
-};
+      clearInterval(game);
+    }
+    snake.unshift(newHead);
+    document.getElementById("foodCounter").innerHTML = foodCounter;
+    document.getElementById("maxFoodCounter").innerHTML = maxFoodCounter;
+    document.getElementById("foodCounter2").innerHTML = foodCounter2;
+}
 
 function gameOverHandler() {
   gameOver.play();
@@ -101,9 +128,8 @@ document.getElementById("replayButtonPopup").addEventListener("click", function 
   document.getElementById("popup").style.display = "none";
   initGame();
 });
+let game=setInterval(drawGame, 100);
 
-
-let game = setInterval(drawGame, 100);
 
 document.addEventListener("keydown", function (event) {
   switch (event.keyCode) {
@@ -150,7 +176,7 @@ function initGame() {
   foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
   foodCounter = 0;
   foodCounter2 = 0
-  
+  newWall = [];
 
   // Réinitialisation de l'image du serpent
   snakeImg = document.getElementById('snakeD');
