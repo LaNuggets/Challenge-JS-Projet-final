@@ -1,12 +1,10 @@
-// import {pseudo} from "./interface";
-// console.log(pseudo);
-
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 let cellSize = 43.75;
 
 const foodImg = new Image();
 foodImg.src = '../Images/Pomme.png';
+
 
 const eatApple = new Audio();
 eatApple.src = '../Sound/mangePomme.mp3'
@@ -41,7 +39,7 @@ let snakeImg = document.getElementById('snakeD'); // Initialisation de snakeImg
 
 
 
-export const drawGame = () => {
+const drawGame = () => {
   const bodySnakeImg = document.getElementById('bodySnakeImg');
   ctx.clearRect(0, 0, 700, 700);
   drawGridBackground();
@@ -88,6 +86,7 @@ export const drawGame = () => {
   document.getElementById("foodCounter").innerHTML = foodCounter;
   document.getElementById("maxFoodCounter").innerHTML = maxFoodCounter;
   document.getElementById("foodCounter2").innerHTML = foodCounter2;
+document.getElementById("foodImg").innerHTML = foodImg;
   
 };
 
