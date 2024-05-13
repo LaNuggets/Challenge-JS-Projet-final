@@ -11,6 +11,7 @@ foodImg.src = '../Images/Pomme.png'
 const mur =new Image();
 mur.src = '../Images/mur.png'
 
+
 const backgroundImage = new Image();
 backgroundImage.src = '../Images/background.jpg'
 
@@ -103,7 +104,18 @@ const drawGame=()=> {
         if(foodCounter>maxFoodCounter)maxFoodCounter++;
         foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
         foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
-        addWall(Math.floor(Math.random() * 15 + 1) * cellSize, Math.floor(Math.random() * 15 + 1) * cellSize);
+       
+        let murX = Math.floor(Math.random() * 15 + 1) * cellSize;
+        let murY = Math.floor(Math.random() * 15 + 1) * cellSize;
+        
+        addWall(murX, murY);
+        for (let i = 0; i < newWall.length; i++) {
+            if (foodX == newWall[i].x && foodY == newWall[i].y) {
+                foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
+                foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
+            }
+        }
+       
       } else{
         snake.pop();
       }
@@ -134,7 +146,7 @@ document.getElementById("replayButtonPopup").addEventListener("click", function 
   document.getElementById("popup").style.display = "none";
   initGame();
 });
-let game=setInterval(drawGame, 100);
+let game=setInterval(drawGame, 150);
 
 
 document.addEventListener("keydown", function (event) {
@@ -188,7 +200,7 @@ function initGame() {
   snakeImg = document.getElementById('snakeD');
 
   // Redémarrer le jeu
-  game = setInterval(drawGame, 100);
+  game = setInterval(drawGame, 150);
 }
 
 function drawGridBackground() {
