@@ -104,7 +104,7 @@ document.getElementById("replayButtonPopup").addEventListener("click", function 
 });
 
 
-let game = setInterval(drawGame, 100);
+let game = setInterval(drawGame, 150);
 
 document.addEventListener("keydown", function (event) {
   switch (event.keyCode) {
@@ -155,7 +155,7 @@ function initGame() {
   snakeImg = document.getElementById('snakeD');
 
   // Redémarrer le jeu
-  game = setInterval(drawGame, 100);
+  game = setInterval(drawGame, 150);
 }
 
 
