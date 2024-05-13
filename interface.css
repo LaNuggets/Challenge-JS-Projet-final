@@ -188,3 +188,16 @@
   float: right;
   cursor: pointer;
 }
+
+.gallery button{
+  position: relative;
+  justify-content: center;
+  margin-top: 5%;
+  margin-left: 25%;
+}
+
+.g{
+  color: orange;
+  display: flex;
+  justify-content: center;
+}

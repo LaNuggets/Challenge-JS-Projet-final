@@ -39,7 +39,9 @@ let snakeImg = document.getElementById('snakeD'); // Initialisation de snakeImg
 
 
 const drawGame = () => {
-  
+  if(snake.length == 256){
+    clearInterval(game);
+  }
   const bodySnakeImg = document.getElementById('bodySnakeImg');
   ctx.clearRect(0, 0, 700, 700);
   
@@ -87,8 +89,7 @@ const drawGame = () => {
   document.getElementById("foodCounter").innerHTML = foodCounter;
   document.getElementById("maxFoodCounter").innerHTML = maxFoodCounter;
   document.getElementById("foodCounter2").innerHTML = foodCounter2;
-//document.getElementById("foodImg").innerHTML = foodImg;
-  
+
 };
 
 function gameOverHandler() {
@@ -136,8 +137,6 @@ document.addEventListener("keydown", function (event) {
       }
       break;
   }
-
-  
 });
 
 function initGame() {

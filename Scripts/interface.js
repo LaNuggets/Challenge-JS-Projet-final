@@ -12,3 +12,4 @@ function closePopup() {
             alert('Please enter a Pseudo !');
         }
 }
+// export {name};
