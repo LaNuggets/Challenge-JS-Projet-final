@@ -23,6 +23,7 @@ snake[0]= { x:2*cellSize, y:8*cellSize};
 let speedX = 0;
 let speedY = 0;
 
+
 let allFood= ([
     {
         food1: 'food1',
@@ -74,10 +75,10 @@ for (let i = 0; i < snake.length; i++) {
   if (i === 0) {
     ctx.drawImage(snakeImg, snake[i].x, snake[i].y, cellSize, cellSize);
   } else {
-    ctx.drawImage(bodySnakeImg, snake[i].x, snake[i].y, cellSize, cellSize);
+    ctx.drawImage(bodySnakeImg, snake[i].x, snake[i].y, cellSize, cellSize); 
+    console.log('la')
   }
 }
-
       let snakeX = snake[0].x;
       let snakeY = snake[0].y;
 
@@ -85,6 +86,7 @@ for (let i = 0; i < snake.length; i++) {
       if(speedY==-1) snakeY-=cellSize;
       if(speedX==1) snakeX+=cellSize;
       if(speedY==1) snakeY+=cellSize;
+
 
       foodXCoordinates.forEach((x, index) => {
         const y = foodYCoordinates[index];
@@ -95,8 +97,8 @@ for (let i = 0; i < snake.length; i++) {
         if(foodCounter>maxFoodCounter)maxFoodCounter++;
             foodXCoordinates[index] =Math.floor(Math.random() * 15 + 1) * cellSize;
             foodYCoordinates[index] =Math.floor(Math.random() * 15 + 1) * cellSize;
-      } else{
-        snake.pop();
+      } else {
+          snake.pop();
       }
     });
 
@@ -107,7 +109,6 @@ for (let i = 0; i < snake.length; i++) {
 
     if(snakeX<0||snakeY<0||snakeX>15*cellSize||snakeY>15*cellSize||checkCollision(newHead, snake)){
       gameOverHandler();
-    
     clearInterval(game);;
     }
     snake.unshift(newHead); 

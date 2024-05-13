@@ -137,7 +137,7 @@ document.addEventListener("keydown", function (event) {
       }
       break;
   }
-});
+}); 
 
 function initGame() {
   // Réinitialisation des variables du jeu
