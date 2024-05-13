@@ -5,7 +5,6 @@ let cellSize = 43.75;
 const foodImg = new Image();
 foodImg.src = '../Images/Pomme.png';
 
-
 const eatApple = new Audio();
 eatApple.src = '../Sound/mangePomme.mp3'
 
@@ -40,8 +39,10 @@ let snakeImg = document.getElementById('snakeD'); // Initialisation de snakeImg
 
 
 const drawGame = () => {
+  
   const bodySnakeImg = document.getElementById('bodySnakeImg');
   ctx.clearRect(0, 0, 700, 700);
+  
   drawGridBackground();
   ctx.drawImage(foodImg, foodX, foodY);
 
@@ -86,7 +87,7 @@ const drawGame = () => {
   document.getElementById("foodCounter").innerHTML = foodCounter;
   document.getElementById("maxFoodCounter").innerHTML = maxFoodCounter;
   document.getElementById("foodCounter2").innerHTML = foodCounter2;
-document.getElementById("foodImg").innerHTML = foodImg;
+//document.getElementById("foodImg").innerHTML = foodImg;
   
 };
 
@@ -158,6 +159,8 @@ function initGame() {
   game = setInterval(drawGame, 100);
 }
 
+
+
 function drawGridBackground() {
   const numCols = Math.ceil(canvas.width / cellSize);
   const numRows = Math.ceil(canvas.height / cellSize);
@@ -169,12 +172,8 @@ function drawGridBackground() {
       const y = row * cellSize;
       const isEven = (col + row) % 2 === 0;
       ctx.fillStyle = isEven ? 'pink' : 'orange';
+      
       ctx.fillRect(x, y, cellSize, cellSize);
     }
   }
 }
-
-
-
-
-
