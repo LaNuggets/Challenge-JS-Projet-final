@@ -5,17 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake Game</title>
     <link rel="stylesheet" href="../interface.css">
+    <script src="../Scripts/interface.js"></script>
 </head>
 <body>
 
     <div id="popup" class="popup">
         <div class="popup-content">
             <h2>Choose Your pseudo</h2> 
-            <form action="">
-                <input type="text" id="pseudo" name="pseudo" required>
-                <span class="close-button" id="closeButton">&times;</span>
-                <input type="submit" value="Submit">
-            </form>
+                <input type="text" id="pseudo" required>
+                <button id="sub" onclick="closePopup()">Ok</button>
         </div>
     </div>
 

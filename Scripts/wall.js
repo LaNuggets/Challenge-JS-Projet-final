@@ -101,8 +101,10 @@ const drawGame=()=> {
         foodCounter2++
         eatApple.play();
         if(foodCounter>maxFoodCounter)maxFoodCounter++;
+        
         foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
         foodY = Math.floor(Math.random() * 15 + 1) * cellSize;
+
         addWall(Math.floor(Math.random() * 15 + 1) * cellSize, Math.floor(Math.random() * 15 + 1) * cellSize);
       } else{
         snake.pop();
