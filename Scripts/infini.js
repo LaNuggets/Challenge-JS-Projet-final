@@ -67,6 +67,7 @@ const drawGame = () => {
 
   if (snakeX == foodX && snakeY == foodY) {
     foodCounter++;
+    foodCounter2++;
     eatApple.play();
     if (foodCounter > maxFoodCounter) maxFoodCounter++;
     foodX = Math.floor(Math.random() * 15 + 1) * cellSize;
